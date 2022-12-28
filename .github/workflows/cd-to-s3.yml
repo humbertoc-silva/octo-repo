@@ -1,0 +1,15 @@
+name: OpenID Connect with Reusable Workflows
+on:
+  push:
+    branches:
+     - main
+jobs:
+  cd-to-s3:
+    uses: humbertoc-silva/octo-automation/.github/workflows/cd-to-s3.yml@main
+    with:
+      environment: production
+    secrets:
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+      ROLE_SESSION_NAME: ${{ secrets.ROLE_SESSION_NAME }}
+      ROLE_TO_ASSUME: ${{ secrets.ROLE_TO_ASSUME }}
